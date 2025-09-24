@@ -1,50 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Financial</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000; /* fallback */
-        }
 
-        .header {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #000C47, #011893);
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            color: #f4f4f4;
-            text-align: center;
-            overflow: hidden;
-        }
+import React from "react";
 
-        .header h1 {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 60px;
-            margin: 0;
+export default function Home() {
+  return (
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden animated-gradient">
+      <style jsx>{`
+        .animated-gradient {
+          background: linear-gradient(45deg, #000C47, #011893, #001A5E, #002B7F, #000C47);
+          background-size: 400% 400%;
+          animation: gradientShift 8s ease-in-out infinite;
+          position: relative;
         }
-
-        .header p {
-            font-family: Arial, sans-serif;
-            font-size: 24px;
-            margin-top: 15px;
+        
+        .animated-gradient::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #000C47 0%, #011893 25%, #001A5E 50%, #002B7F 75%, #000C47 100%);
+          background-size: 300% 300%;
+          animation: gradientSlide 12s linear infinite;
+          opacity: 0.8;
         }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Inicio Financial</h1>
-        <p>Coming soon</p>
+        
+        .animated-gradient::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(ellipse at center, rgba(1, 24, 147, 0.3) 0%, rgba(0, 12, 71, 0.6) 70%);
+          animation: pulseGlow 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes gradientShift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          25% {
+            background-position: 100% 50%;
+          }
+          50% {
+            background-position: 50% 100%;
+          }
+          75% {
+            background-position: 50% 0%;
+          }
+        }
+        
+        @keyframes gradientSlide {
+          0% {
+            background-position: 0% 0%;
+          }
+          25% {
+            background-position: 100% 50%;
+          }
+          50% {
+            background-position: 0% 100%;
+          }
+          75% {
+            background-position: 50% 0%;
+          }
+          100% {
+            background-position: 0% 0%;
+          }
+        }
+        
+        @keyframes pulseGlow {
+          from {
+            opacity: 0.6;
+          }
+          to {
+            opacity: 0.9;
+          }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .content {
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          animation: fadeInUp 5s ease-out;
+        }
+        
+        .company-title {
+          font-family: 'Times New Roman', Times, serif;
+          font-size: clamp(3rem, 8vw, 7rem);
+          font-weight: 400;
+          color: #ffffff;
+          margin-bottom: 2rem;
+          letter-spacing: -0.02em;
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          line-height: 1.1;
+        }
+        
+        .coming-soon {
+          font-family: 'Avenir Next LT Pro', sans-serif;
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+          font-weight: 300;
+          color: #ffffff;
+          letter-spacing: 0.1em;
+          text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+          opacity: 0.95;
+        }
+        
+        .elegant-line {
+          width: 100px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, #ffffff, transparent);
+          margin: 3rem auto;
+          animation: shimmer 6s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+          0%, 100% {
+            opacity: 0.5;
+            transform: scaleX(0.8);
+          }
+          50% {
+            opacity: 1;
+            transform: scaleX(1.2);
+          }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .content {
+            padding: 2rem;
+          }
+          
+          .company-title {
+            margin-bottom: 1.5rem;
+          }
+          
+          .elegant-line {
+            margin: 2rem auto;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .content {
+            padding: 1rem;
+          }
+        }
+      `}</style>
+      
+      <div className="content">
+        <h1 className="company-title">Inicio Financial</h1>
+        <div className="elegant-line"></div>
+        <h2 className="coming-soon">Coming Soon</h2>
+      </div>
     </div>
-</body>
-</html>
+  );
+}
